@@ -5,30 +5,31 @@
 
 // // //1
 
-// let testObj = {};
-// testObj.prop = "test property";
-// testObj.pi = Math.PI;
-// console.log(testObj.prop, testObj['prop']);
-// delete testObj.prop;
+let testObj = {};
+testObj.prop = "test property";
+testObj.pi = Math.PI;
+console.log(testObj.prop, testObj['prop']);
+delete testObj.prop;
 
 
-// testObj.sumOfTwo = (a, b) => a + b;
-// let res = testObj.sumOfTwo("40", 150);
-// console.log(res, typeof (res))
+testObj.sumOfTwo = (a, b) => a + b;
+let res = testObj.sumOfTwo("40", 150);
+console.log(res, typeof (res))
 
 
-// let newObj = Object.assign({}, testObj, { newProp: { x: 10 } });
-// for (var key in testObj) {
-//     delete testObj[key];
-// }
+let newObj = Object.assign({}, testObj, { newProp: { x: 10 } });
+for (let key in testObj) {
+    delete testObj[key];
+}
 
-// let copiedObj = { ...newObj };
-// console.log(newObj, copiedObj)
-// copiedObj.newProp.x = 100;
-// console.log(newObj.newProp, copiedObj.newProp)
+let copiedObj = { ...newObj };
+console.log(newObj, copiedObj)
+copiedObj.newProp.x = 100;
+console.log(newObj.newProp, copiedObj.newProp)
 
-// copiedArray = [...Object.keys(copiedObj), ...Object.values(copiedObj)]
-// console.log(copiedArray)
+let copiedArray = [];
+copiedArray = [...Object.keys(copiedObj), ...Object.values(copiedObj)];
+console.log(copiedArray)
 
 
 
@@ -66,38 +67,38 @@
 
 // // //3
 
-const targetObj = {
-    x: 1,
-    y: {
-        w: 'test',
-        q: {
-            a: true,
-            b: () => console.log('useless'),
-            c: {
-                d: ['a', 'b', 'c']
-            }
-        }
-    },
-    z: [1, 2, 3, 4, 5]
-}
-function deepCopy(obj) {
-    let copied = {};
-    for (let key in obj) {
-        if (typeof obj[key] === 'object') {
-            if (Array.isArray(obj[key])) {
-                copied[key] = [...obj[key]];
-            } else {
-                copied[key] = deepCopy(obj[key]);
-            }
-        } else {
-            copied[key] = obj[key];
-        }
-    }
-    return copied;
-}
-const copiedObj = deepCopy(targetObj);
-console.log(targetObj, copiedObj)
+// const targetObj = {
+//     x: 1,
+//     y: {
+//         w: 'test',
+//         q: {
+//             a: true,
+//             b: () => console.log('useless'),
+//             c: {
+//                 d: ['a', 'b', 'c']
+//             }
+//         }
+//     },
+//     z: [1, 2, 3, 4, 5]
+// }
+// function deepCopy(obj) {
+//     let copied = {};
+//     for (let key in obj) {
+//         if (typeof obj[key] === 'object') {
+//             if (Array.isArray(obj[key])) {
+//                 copied[key] = [...obj[key]];
+//             } else {
+//                 copied[key] = deepCopy(obj[key]);
+//             }
+//         } else {
+//             copied[key] = obj[key];
+//         }
+//     }
+//     return copied;
+// }
+// const copiedObj = deepCopy(targetObj);
+// console.log(targetObj, copiedObj)
 
-targetObj.y.q.c.d.splice(0, 1, 100);
-const areElementsEqual = targetObj.y.q.c.d[0] === copiedObj.y.q.c.d[0];
-console.log(areElementsEqual)
+// targetObj.y.q.c.d.splice(0, 1, 100);
+// const areElementsEqual = targetObj.y.q.c.d[0] === copiedObj.y.q.c.d[0];
+// console.log(areElementsEqual)
